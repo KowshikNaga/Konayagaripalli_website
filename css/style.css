@@ -190,6 +190,13 @@ button{font-family:inherit;}
   font-weight:500;
 }
 .cta-row{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:64px;}
+#ramalayam .cta-row,
+#vemallamma-thalli .cta-row,
+#ganesh-chaturthi .cta-row,
+#ankalamma-thalli .cta-row,
+#gang .cta-row {
+  margin-bottom: 0;
+}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:16px 26px;
@@ -237,7 +244,7 @@ button{font-family:inherit;}
 .section{
   max-width:1180px;
   margin:0 auto;
-  padding:72px 32px;
+  padding: 72px 32px;
 }
 .section-eyebrow{
   display:inline-flex;
@@ -486,4 +493,317 @@ button{font-family:inherit;}
   .btn{width:100%; justify-content:center;}
   .teaser-cards{grid-template-columns:1fr;}
   .member-card{flex-basis:180px;}
+}
+
+@media screen and (max-width: 768px) {
+  /* 1. Reset Global Layouts to Stack Vertically */
+  body, main, .container, .row, .wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 10px !important;
+  }
+
+  /* 2. Stop Columns from Sitting Side-by-Side */
+  .col, .column, [class*="col-"], aside, section {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 10px 0 !important;
+  }
+
+  /* 3. Make Images Fit Small Screens Perfectly */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* 4. Fix Overlapping Font Sizes */
+  h1 { font-size: 2rem !important; }
+  h2 { font-size: 1.6rem !important; }
+  p, li { font-size: 1rem !important; }
+}
+
+/* ================= VEMALLAMMA THALLI ================= */
+
+#vemallamma-thalli {
+    padding: 90px 2%;
+    background: #f8f0e3;
+    position: relative;
+}
+
+#vemallamma-thalli .section-title {
+    margin: 0 0 20px;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #3b2117;
+}
+
+/* Telugu description */
+#vemallamma-thalli .section-sub {
+    max-width: 900px;
+    margin: 0 0 35px;
+    font-family: 'Noto Sans Telugu', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #684b3d;
+}
+
+/* Temple image */
+#vemallamma-thalli > img {
+    display: block;
+    width: 100%;
+    max-width: 450px;
+    height: 550px;
+    margin: 20px 0;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(70, 35, 20, 0.18);
+}
+
+/* Gallery button row */
+#vemallamma-thalli .cta-row {
+    margin-top: 30px;
+}
+
+/* Gallery button */
+#vemallamma-thalli .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 10px 20px;
+
+    background: #bd512c;
+    color: #ffffff;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+
+    text-decoration: none;
+    border-radius: 16px;
+
+    box-shadow: 0 12px 25px rgba(145, 55, 25, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Gallery icon */
+#vemallamma-thalli .btn-primary svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Hover effect */
+#vemallamma-thalli .btn-primary:hover {
+    background: #9f3f21;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(145, 55, 25, 0.28);
+}
+
+/* Click effect */
+#vemallamma-thalli .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    #vemallamma-thalli {
+        padding: 60px 6%;
+    }
+
+    #vemallamma-thalli .section-title {
+        font-size: 42px;
+    }
+
+    #vemallamma-thalli .section-sub {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    #vemallamma-thalli > img {
+        height: 260px;
+        border-radius: 16px;
+    }
+
+    #vemallamma-thalli .btn-primary {
+        width: 100%;
+        padding: 16px 20px;
+    }
+}
+
+/* ================= RAMALAYAM ================= */
+
+#ramalayam {
+    padding: 90px 2%;
+    background: #f8f0e3;
+    position: relative;
+}
+
+#ramalayam .section-title {
+    margin: 0 0 25px;
+    font-family: 'Fraunces', serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 600;
+    line-height: 1.1;
+    color: #3b2117;
+}
+
+/* Telugu description */
+
+#ramalayam .section-sub {
+    max-width: 900px;
+    margin: 0 0 35px;
+    font-family: 'Noto Sans Telugu', sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    color: #684b3d;
+}
+
+/* Ramalayam image */
+
+#ramalayam > img {
+    display: block;
+    width: 100%;
+    max-width: 500px;
+    height: 320px;
+    margin: 30px 0;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(70, 35, 20, 0.18);
+}
+
+/* Gallery button row */
+
+#ramalayam .cta-row {
+    margin-top: 30px;
+}
+
+/* Gallery button */
+
+#ramalayam .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+
+    padding: 10px 20px;
+
+    background: #bd512c;
+    color: #ffffff;
+
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+
+    text-decoration: none;
+    border-radius: 16px;
+
+    box-shadow: 0 12px 25px rgba(145, 55, 25, 0.22);
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* Gallery icon */
+
+#ramalayam .btn-primary svg {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* Hover effect */
+
+#ramalayam .btn-primary:hover {
+    background: #9f3f21;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 30px rgba(145, 55, 25, 0.28);
+}
+
+/* Click effect */
+
+#ramalayam .btn-primary:active {
+    transform: translateY(0);
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+    #ramalayam {
+        padding: 60px 6%;
+    }
+
+    #ramalayam .section-title {
+        font-size: 42px;
+    }
+
+    #ramalayam .section-sub {
+        font-size: 18px;
+        line-height: 1.8;
+    }
+
+    #ramalayam > img {
+        height: 260px;
+        border-radius: 16px;
+    }
+
+    #ramalayam .btn-primary {
+        width: 100%;
+        padding: 16px 20px;
+    }
+}
+
+/* ================= GANG — AUTO-SCROLLING GALLERY ================= */
+#gang {
+    padding: 90px 2%;
+    background: #f8f0e3;
+    position: relative;
+}
+
+#gang .section-title {
+    margin-bottom: 40px;
+}
+
+/* Slideshow container */
+.gang-slideshow {
+    position: relative;
+    width: 100%;
+    height: 580px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* All images */
+.gang-slide {
+    position: absolute;
+    width: 100%;
+    max-width: 1250px;
+    height: 580px;
+
+    object-fit: cover;
+    object-position: center;
+
+    border-radius: 22px;
+
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+/* Active image */
+.gang-slide.active {
+    opacity: 1;
 }

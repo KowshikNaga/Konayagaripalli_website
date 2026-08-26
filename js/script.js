@@ -41,17 +41,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  var adviceForm = document.getElementById('advice-form');
-  if (adviceForm) {
-    adviceForm.addEventListener('submit', function (e) {
-      e.preventDefault();
-      // Hook this up to your backend / form service of choice.
-      alert('Thanks — your message has been noted. (Wire this up to your backend to actually send it.)');
-      adviceForm.reset();
-      if (charCount) charCount.textContent = '0 / ' + (adviceField ? adviceField.getAttribute('maxlength') : 2000);
-    });
-  }
+var adviceForm = document.getElementById('advice-form');
+if (adviceForm) {
+  adviceForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
+    var sendBtn = adviceForm.querySelector('.send-btn');
+    var ajaxUrl = 'https://api.web3forms.com/submit';
+
+    if (sendBtn) { sendBtn.disabled = true; sendBtn.textContent = 'Sending...'; }
+
+    fetch(ajaxUrl, {
+      method: 'POST',
+      body: new FormData(adviceForm),
+      headers: { 'Accept': 'application/json' }
+    })
+      .then(function (res) { return res.ok ? res.json() : Promise.reject(res); })
+      .then(function () {
+        alert('Thanks — your message has been sent to the Konayagaripalli team.');
+        adviceForm.reset();
+        if (charCount) charCount.textContent = '0 / ' + (adviceField ? adviceField.getAttribute('maxlength') : 2000);
+      })
+      .catch(function () {
+        alert('Something went wrong sending your message. Please try again, or email konayagaripalli@gmail.com directly.');
+      })
+      .finally(function () {
+        if (sendBtn) { sendBtn.disabled = false; sendBtn.textContent = 'Send Message'; }
+      });
+  });
+}
   /* ---------- Members: horizontal scroll + progress bar ---------- */
   var scrollEl = document.getElementById('members-scroll');
   var fillEl = document.getElementById('members-scroll-fill');
@@ -83,5 +101,15 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     }
   }
+  /* ---------- Gang: auto slideshow, one image at a time, 30s each ---------- */
+var gangSlides = document.querySelectorAll('#gang .gang-slide');
+if (gangSlides.length > 1) {
+  var gangIndex = 0;
+  setInterval(function () {
+    gangSlides[gangIndex].classList.remove('active');
+    gangIndex = (gangIndex + 1) % gangSlides.length;
+    gangSlides[gangIndex].classList.add('active');
+  }, 10000); // 10 seconds per image
+}
 
 });
