@@ -20,6 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
       setActiveLink(link);
     });
   });
+    /* ---------- Mobile menu: toggle hamburger open/closed ---------- */
+  var menuToggle = document.getElementById('menu-toggle');
+  var navLinksEl = document.getElementById('nav-links');
+
+  if (menuToggle && navLinksEl) {
+    menuToggle.addEventListener('click', function () {
+      var isOpen = navLinksEl.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close the menu once a section link is tapped
+    navLinksEl.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinksEl.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
 
   // On page load, if the URL already has a #hash matching a nav link
   // (e.g. someone opened yoursite.com/#members), highlight that one.
@@ -90,7 +108,7 @@ if (adviceForm) {
 
     var cardWidth = 240; // approx card width + gap, matches .member-card flex-basis + gap in style.css
 
-    if (prevBtn) {
+        if (prevBtn) {
       prevBtn.addEventListener('click', function () {
         scrollEl.scrollBy({ left: -cardWidth, behavior: 'smooth' });
       });
@@ -100,6 +118,19 @@ if (adviceForm) {
         scrollEl.scrollBy({ left: cardWidth, behavior: 'smooth' });
       });
     }
+
+    /* ---------- Members: auto-scroll every 2 seconds, loops, pauses on hover ---------- */
+    var membersAutoScroll = setInterval(function () {
+      var maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
+      if (scrollEl.scrollLeft >= maxScroll - 5) {
+        scrollEl.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        scrollEl.scrollBy({ left: cardWidth, behavior: 'smooth' });
+      }
+    }, 2000);
+
+    scrollEl.addEventListener('mouseenter', function () { clearInterval(membersAutoScroll); });
+    scrollEl.addEventListener('touchstart', function () { clearInterval(membersAutoScroll); }, { passive: true });
   }
   /* ---------- Gang: auto slideshow, one image at a time, 30s each ---------- */
 var gangSlides = document.querySelectorAll('#gang .gang-slide');
