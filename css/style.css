@@ -52,6 +52,20 @@ button{font-family:inherit;}
   z-index:50;
   flex-wrap:wrap;
 }
+.menu-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:44px; height:44px;
+  border-radius:12px;
+  border:1px solid var(--cream-line);
+  background:#fff;
+  color:var(--ink);
+  cursor:pointer;
+}
+.menu-toggle svg{width:22px; height:22px;}
+  
+
 .brand{display:flex; align-items:center; gap:12px;}
 .brand-mark{
   width:46px; height:46px; border-radius:50%;
@@ -115,18 +129,6 @@ button{font-family:inherit;}
 .follow-btn:hover{transform:translateY(-1px); box-shadow:0 6px 16px rgba(193,53,132,0.35);}
 .follow-btn svg{width:16px; height:16px;}
 
-.menu-toggle{
-  display:none;
-  align-items:center;
-  justify-content:center;
-  width:44px; height:44px;
-  border-radius:12px;
-  border:1px solid var(--cream-line);
-  background:#fff;
-  color:var(--ink);
-  cursor:pointer;
-}
-.menu-toggle svg{width:22px; height:22px;}
 
 /* =========================================================
    HERO
